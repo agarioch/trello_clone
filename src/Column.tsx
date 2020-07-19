@@ -1,7 +1,20 @@
 import React from "react";
+import { ColumnContainer, ColumnTitle } from "./styles";
+import { AddNewItem } from "./AddNewItem";
 
-export const Column = () => {
-    return
-    (<div>Column Title</div>
-    )
+interface ColumnProps {
+  text: string;
 }
+
+export const Column = ({
+  text,
+  children,
+}: React.PropsWithChildren<ColumnProps>) => {
+  return (
+    <ColumnContainer>
+      <ColumnTitle>{text}</ColumnTitle>
+      {children}
+      <AddNewItem onAdd={console.log} toggleButtonText="+ Add New Item" dark />
+    </ColumnContainer>
+  );
+};
