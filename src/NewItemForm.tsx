@@ -11,13 +11,18 @@ export const NewItemForm = ({ onAdd }: NewItemFormProps) => {
   const inputRef = useFocus();
 
   return (
-    <NewItemFormContainer>
+    <NewItemFormContainer
+      onSubmit={(evt) => {
+        evt.preventDefault();
+        onAdd(text);
+      }}
+    >
       <NewItemInput
         ref={inputRef}
         value={text}
         onChange={(e) => setText(e.target.value)}
       />
-      <NewItemButton onClick={() => onAdd(text)}>Add Item</NewItemButton>
+      <NewItemButton>Add Item</NewItemButton>
     </NewItemFormContainer>
   );
 };
