@@ -4,11 +4,13 @@ import { Card } from "./Card";
 import { Column } from "./Column";
 import { useAppState } from "./AppStateContext";
 import { AddNewItem } from "./AddNewItem";
+import { CustomDragLayer } from "./utils/CustomDragLayer";
 
 function App() {
   const { state, dispatch } = useAppState();
   return (
     <AppContainer>
+      <CustomDragLayer />
       {state.lists.map((list, i) => (
         <Column id={list.id} text={list.text} key={list.id} index={i} />
       ))}
